@@ -1,0 +1,32 @@
+{
+  "name": "fetch-video-processor",
+  "version": "1.0.0",
+  "description": "A video fetch and downsample to s3 serverless",
+  "main": "handler.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/xi4oh4o/fetch-video-processor.git"
+  },
+  "keywords": [
+    "ffmpeg",
+    "serverless",
+    "nodejs"
+  ],
+  "author": "xi4oh4o",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/xi4oh4o/fetch-video-processor/issues"
+  },
+  "homepage": "https://github.com/xi4oh4o/fetch-video-processor#readme",
+  "devDependencies": {
+    "cz-conventional-changelog": "^2.1.0"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
+}
