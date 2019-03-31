@@ -10,7 +10,7 @@ This can fetch video by URI and through FFmpeg processing, final stored in the A
 AWS Lambda has a number of limitations, it is suitable for simple logical processing and pay as you should. Like image watermarks or message notifications etc.
 
 * use AWS S3 for uploads and downloads
-* Should handle the resources in S3 through the lambda trigger instead of serverless
+* Should handle the resources in S3 through the lambda trigger instead of HTTP event
 * Huge videos should use Amazon Elastic Transcoder
 
 Deploy in local
