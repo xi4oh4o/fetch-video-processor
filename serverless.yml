@@ -17,12 +17,19 @@ service: fetch-video-processor # NOTE: update this with your service name
 # Check out our docs for more details
 # frameworkVersion: "=X.X.X"
 
-plugins:
-  - serverless-offline
-
 provider:
   name: aws
   runtime: nodejs8.10
+
+plugins:
+  - serverless-offline
+  - serverless-s3-local
+
+custom:
+  s3:
+    host: 0.0.0.0
+    port: 4567
+    directory: ./s3-local
 
 # you can overwrite defaults here
 #  stage: dev
@@ -96,12 +103,12 @@ functions:
 #      variable2: value2
 
 # you can add CloudFormation resource templates here
-#resources:
-#  Resources:
-#    NewResource:
-#      Type: AWS::S3::Bucket
-#      Properties:
-#        BucketName: my-new-bucket
+resources:
+  Resources:
+    NewResource:
+      Type: AWS::S3::Bucket
+      Properties:
+        BucketName: local-bucket
 #  Outputs:
 #     NewOutput:
 #       Description: "Description for the output"
