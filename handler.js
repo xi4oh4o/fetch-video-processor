@@ -6,7 +6,7 @@ const nf = require('./src/nf');
 const s3 = require('./src/s3');
 const ffmpeg = require('./src/ffmpeg');
 
-module.exports.fetch = async (event, context, callback) => {
+module.exports.fetch = async (event) => {
 
   let body = JSON.parse(event.body);
 
@@ -21,7 +21,7 @@ module.exports.fetch = async (event, context, callback) => {
   async_task()
     .then(data => {
       console.log(data)
-    });
+    }).catch(err => console.log(err));
 
   return {
       statusCode: 200,
