@@ -1,14 +1,32 @@
 'use strict';
 
-module.exports.hello = async (event) => {
+const fs = require('fs');
+const path = require('path');
+const nf = require('./src/nf');
+const s3 = require('./src/s3');
+const ffmpeg = require('./src/ffmpeg');
+
+module.exports.fetch = async (event, context, callback) => {
+
+  let body = JSON.parse(event.body);
+
+  async function async_task() {
+
+    // @todo use ffprobe check uri exists
+    const destPath = await nf.fetchToDestPath(body.uri);
+    const finalPath = await ffmpeg.resize(destPath);
+    return await s3.upload('local-bucket', path.basename(finalPath), fs.createReadStream(finalPath));
+  }
+
+  async_task()
+    .then(data => {
+      console.log(data)
+    });
+
   return {
-    statusCode: 200,
-    body: JSON.stringify({
-      message: 'Go Serverless v1.0! Your function executed successfully!',
-      input: event,
+      statusCode: 200,
+      body: JSON.stringify({
+      message: 'Video file add processor task successed!'
     }),
   };
-
-  // Use this code if you don't use the http event with the LAMBDA-PROXY integration
-  // return { message: 'Go Serverless v1.0! Your function executed successfully!', event };
 };
