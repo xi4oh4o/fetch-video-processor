@@ -9,10 +9,10 @@ exports.fetchToDestPath = function(urls) {
 
   return new Promise((resolve, reject) => {
 
+    console.log(`Downloading urls: ${urls}`);
     const destPath = path.join(os.tmpdir(), path.basename(urls))
     const file = fs.createWriteStream(destPath)
     file.on('close', () => {
-      console.log(`Downloading urls: ${urls}`);
       resolve(destPath);
     });
     file.on('error', reject);
