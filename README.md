@@ -17,14 +17,17 @@ sls offline start
 
 Example
 ===============
-Fetch Video by URI and Processing, final stored in AWS S3
+Fetch Video by URI and Processing Scale, final stored in AWS S3
+
+The videoWidth parameter use for scales the video to specified width
 ```bash
 curl -X POST \
   http://localhost:3000/fetch \
   -H 'Content-Type: application/json' \
   -H 'cache-control: no-cache' \
   -d '{
-  "uri": "https://www.sample-videos.com/video123/mp4/720/big_buck_bunny_720p_30mb.mp4"
+  "uri": "https://www.sample-videos.com/video123/mp4/720/big_buck_bunny_720p_30mb.mp4",
+  "videoWidth": 480
 }'
 ```
 You can open s3-local http://localhost:4567/local-bucket check Processed file
