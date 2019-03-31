@@ -17,19 +17,23 @@ service: fetch-video-processor # NOTE: update this with your service name
 # Check out our docs for more details
 # frameworkVersion: "=X.X.X"
 
+custom:
+  s3:
+    host: ${file(./config.yml):s3_local_host}
+    port: ${file(./config.yml):s3_local_port}
+    directory: ${file(./config.yml):s3_local_directory}
+
+  bucket_endpoint: ${file(./config.yml):bucket_endpoint}
+
 provider:
   name: aws
   runtime: nodejs8.10
+  environment:
+    BUCKET_ENDPOINT: ${self:custom.bucket_endpoint}
 
 plugins:
   - serverless-offline
   - serverless-s3-local
-
-custom:
-  s3:
-    host: 0.0.0.0
-    port: 4567
-    directory: ./s3-local
 
 # you can overwrite defaults here
 #  stage: dev
