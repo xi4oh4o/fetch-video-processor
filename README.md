@@ -5,13 +5,8 @@ fetch-video-processor is a Serverless HTTP event functions.
 This can fetch video by URI and through FFmpeg processing, final stored in the AWS S3.
 
 # Notice
-> Notice: this is an uncompleted example project, For reference only.
 
-AWS Lambda has a number of limitations, it is suitable for simple logical processing and pay as you should. Like image watermarks or message notifications etc.
-
-* use AWS S3 for uploads and downloads
-* Should handle the resources in S3 through the lambda trigger instead of HTTP event
-* Huge videos should use Amazon Elastic Transcoder
+## This is an uncompleted example project, For reference only.
 
 Deploy in local
 ===============
@@ -33,6 +28,14 @@ curl -X POST \
 }'
 ```
 You can open s3-local http://localhost:4567/local-bucket check Processed file
+
+# Best practices
+AWS Lambda has a number of limitations, it is suitable for simple logical processing and pay as you should. Like image watermarks or message notifications etc.
+
+* Use AWS S3 for uploads and downloads resources
+* Handle the resources in AWS S3 through the lambda trigger instead of HTTP event
+* Huge videos should use Amazon Elastic Transcoder
+
 
 # Todo
 - [ ] Request ffmpeg parameters Support
