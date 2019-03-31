@@ -11,16 +11,16 @@ const ffmpeg = require('fluent-ffmpeg');
 ffmpeg.setFfmpegPath(ffmpegPath);
 
 
-exports.resize = function(file_path) {
-    console.log(`Processing file: ${file_path}`);
+exports.resize = function(filePath, videoWidth) {
+    console.log(`Processing file: ${filePath}`);
   
     return new Promise((resolve, reject) => {
-        const input = fs.createReadStream(file_path);
+        const input = fs.createReadStream(filePath);
         input.pipe(hash);
-        const destPath = path.join(os.tmpdir() ,hash.digest('hex')+path.basename(file_path))
+        const destPath = path.join(os.tmpdir() ,hash.digest('hex')+path.basename(filePath))
         
-        ffmpeg(file_path)
-        .size('480x?')
+        ffmpeg(filePath)
+        .size(videoWidth+'x?')
         .output(destPath)
         .on('error', reject)
         .on('end', () => resolve(destPath))
