@@ -20,7 +20,8 @@ exports.fetchToDestPath = function(urls) {
     function checkStatus(res) {
 
       if (!res.ok) {
-        return reject(res.statusText);
+        return reject(new Error(
+          `Failed to fetch ${res.url}: ${res.status} ${res.statusText}`));
       }
 
       let fileType = res.headers.get('content-type');
