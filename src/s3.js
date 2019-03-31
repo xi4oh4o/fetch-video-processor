@@ -1,13 +1,14 @@
 'use strict';
 
 const AWS = require('aws-sdk');
+const env = require('../src/env');
 
 exports.upload = function(Bucket, Key, Body) {
     
     return new Promise((resolve, reject) => {
       const s3 = new AWS.S3({
         s3ForcePathStyle: true,
-        endpoint: new AWS.Endpoint('http://localhost:4567'),
+        endpoint: new AWS.Endpoint(env.getBucketEndPoint()),
       });
 
       return s3.putObject({
