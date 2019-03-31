@@ -26,7 +26,7 @@ module.exports.fetch = async (event) => {
   return {
       statusCode: 200,
       body: JSON.stringify({
-      message: 'Video file add processor task successed!'
+      message: 'Video file add processor task queued successed!'
     }),
   };
 };
