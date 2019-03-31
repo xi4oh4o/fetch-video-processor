@@ -10,11 +10,21 @@ module.exports.fetch = async (event) => {
 
   let body = JSON.parse(event.body);
 
+  if (typeof body.uri === 'undefined' || typeof body.videoWidth === 'undefined') {
+    
+    return {
+      statusCode: 503,
+      body: JSON.stringify({
+      message: 'Request parameter exception.'
+    }),
+  };
+  }
+
   async function async_task() {
 
     // @todo use ffprobe check uri exists
     const destPath = await nf.fetchToDestPath(body.uri);
-    const finalPath = await ffmpeg.resize(destPath);
+    const finalPath = await ffmpeg.resize(destPath, body.videoWidth);
     return await s3.upload('local-bucket', path.basename(finalPath), fs.createReadStream(finalPath));
   }
 
