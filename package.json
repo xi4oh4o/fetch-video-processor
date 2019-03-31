@@ -22,7 +22,8 @@
   },
   "homepage": "https://github.com/xi4oh4o/fetch-video-processor#readme",
   "devDependencies": {
-    "cz-conventional-changelog": "^2.1.0"
+    "cz-conventional-changelog": "^2.1.0",
+    "serverless-offline": "^4.9.3"
   },
   "config": {
     "commitizen": {
