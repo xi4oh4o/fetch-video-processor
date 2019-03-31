@@ -17,6 +17,9 @@ service: fetch-video-processor # NOTE: update this with your service name
 # Check out our docs for more details
 # frameworkVersion: "=X.X.X"
 
+plugins:
+  - serverless-offline
+
 provider:
   name: aws
   runtime: nodejs8.10
