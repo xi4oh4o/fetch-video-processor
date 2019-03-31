@@ -1,0 +1,7 @@
+# S3 Local Configure
+s3_local_host: 0.0.0.0
+s3_local_port: 4567
+s3_local_directory: './s3-local'
+
+# Bucket configure
+bucket_endpoint: 'http://localhost:4567'
