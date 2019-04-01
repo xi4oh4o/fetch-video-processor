@@ -4,6 +4,7 @@ const fs = require('fs');
 const path = require('path');
 const nf = require('./src/nf');
 const s3 = require('./src/s3');
+const env = require('./src/env');
 const ffmpeg = require('./src/ffmpeg');
 
 module.exports.fetch = async (event) => {
@@ -25,7 +26,7 @@ module.exports.fetch = async (event) => {
     // @todo use ffprobe check uri exists
     const destPath = await nf.fetchToDestPath(body.uri);
     const finalPath = await ffmpeg.resize(destPath, body.videoWidth);
-    return await s3.upload('local-bucket', path.basename(finalPath), fs.createReadStream(finalPath));
+    return await s3.upload(env.getBucketName(), path.basename(finalPath), fs.createReadStream(finalPath));
   }
 
   async_task()
