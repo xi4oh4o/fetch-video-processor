@@ -15,6 +15,15 @@ npm install
 sls offline start
 ```
 
+Deploy in Lambda
+=================
+```bash
+npm install
+npm install --save @ffmpeg-installer/ffmpeg --force
+serverless deploy
+```
+![Deploy in lambda](http://wx4.sinaimg.cn/large/6209f836ly1g1n6dg1zjej20t30nagqj.jpg)
+
 Example
 ===============
 Fetch Video by URI and Processing Scale, final stored in AWS S3
