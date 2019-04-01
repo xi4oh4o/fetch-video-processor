@@ -24,12 +24,14 @@ custom:
     directory: ${file(./config.yml):s3_local_directory}
 
   bucket_endpoint: ${file(./config.yml):bucket_endpoint}
+  bucket_name: ${file(./config.yml):bucket_name}
 
 provider:
   name: aws
   runtime: nodejs8.10
   environment:
     BUCKET_ENDPOINT: ${self:custom.bucket_endpoint}
+    BUCKET_NAME: ${self:custom.bucket_name}
 
 plugins:
   - serverless-offline
