@@ -129,3 +129,10 @@ resources:
 #     NewOutput:
 #       Description: "Description for the output"
 #       Value: "Some output value"
+package:
+  exclude:
+    - .git/**
+    - node_modules/@ffmpeg-installer/win32-ia32/**
+    - node_modules/@ffmpeg-installer/linux-ia32/**
+    - node_modules/@ffmpeg-installer/win32-x64/**
+    - node_modules/@ffmpeg-installer/darwin-x64/**
