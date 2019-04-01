@@ -5,3 +5,4 @@ s3_local_directory: './s3-local'
 
 # Bucket configure
 bucket_endpoint: 'http://localhost:4567'
+bucket_name: 'local-bucket'
