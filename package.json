@@ -33,7 +33,7 @@
   },
   "dependencies": {
     "@ffmpeg-installer/ffmpeg": "^1.0.17",
-    "aws-sdk": "^2.432.0",
+    "aws-sdk": "^2.814.0",
     "fluent-ffmpeg": "^2.1.2",
     "node-fetch": "^2.3.0"
   }
